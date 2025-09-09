@@ -1,0 +1,88 @@
+/*公共样式 字体，行高，字体颜色等*/
+.pagebar {
+    line-height:0.42rem;
+    color:#333333;
+    text-align:center;
+    margin-top:0.52rem;
+    font-size: .14rem;
+}
+/*去掉a链接的下划线*/
+.pagebar a{
+    text-decoration: none;
+}
+/*消掉最左侧页码区margin-left的5个像素*/
+.pagebar .p_pages{
+    margin-left: -0.05rem;
+}
+/*按钮和页码的外观*/
+.pagebar .p_fun_d, .pagebar .p_no_d,.pagebar .p_fun a, .pagebar .p_no a{
+    background: #ededed;
+    padding: 0rem 0.2rem;
+    margin:0rem 0.05rem;
+    box-sizing:border-box;
+    display:inline-block;
+    vertical-align:middle;
+    transition: .5s;
+}
+ /*文字对齐样式*/
+.pagebar .p_t{
+    margin:0rem;
+    padding:0rem;
+    display:inline-block;
+    vertical-align:middle;
+}
+ /*无链接的字体颜色*/
+.pagebar .p_fun_d, .pagebar .p_no_d{
+    color: #666666;
+}
+/*链接字体颜色*/
+.pagebar .p_fun a, .pagebar .p_no a{
+    color: #333333;
+}
+/*鼠标移上时有链接按钮的外观*/
+.pagebar .p_no a:hover,.pagebar .p_fun a:hover, .pagebar .p_goto a:hover{
+    background: #ff903f;
+    color: #fff;
+}
+/*页码省略号...的外观*/
+.pagebar .p_dot {
+    margin-left:0.05rem;
+    margin-right:0.05rem;
+    color:#333333;
+}
+/*当前页码的外观*/
+.pagebar .p_no_d {
+    color: #fff;
+    background: #ff903f;
+}
+ 
+/*按钮控制*/
+ 
+/*控制是否显示 "首页" "尾页" */
+.pagebar .p_first,.pagebar .p_first_d,.pagebar .p_last,.pagebar .p_last_d{
+    display:none;
+}
+ 
+/*控制是否显示 "上页" "下页"*/
+.pagebar .p_prev,.pagebar .p_prev_d,.pagebar .p_next,.pagebar .p_next_d{
+    /*display:none;*/
+}
+ 
+/*控制是否显示无链接的 "首页" "上页" "下页" "尾页"*/
+.pagebar .p_first_d,.pagebar .p_prev_d,.pagebar .p_next_d,.pagebar .p_last_d{
+    /*display:none;*/
+}
+ 
+/*控制是否显示页码*/
+.pagebar .p_no,.pagebar .p_no_d,.pagebar .p_dot{
+    /*display:none;*/
+}
+
+@media screen and (max-width:768px) {
+    .pagebar{
+        margin-top:0.4rem;
+    }
+    .pagebar .p_fun_d, .pagebar .p_no_d,.pagebar .p_fun a, .pagebar .p_no a{
+        padding: 0rem 0.12rem;
+    }
+}

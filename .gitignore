@@ -1,5 +1,7 @@
 /web/node_modules
+/main/node_modules
 /web/dist
+/main/dist
 
 .DS_Store
 
@@ -32,6 +34,8 @@ server/uploads/
 *.iml
 web/.pnpm-debug.log
 web/pnpm-lock.yaml
+main/.pnpm-debug.log
+main/pnpm-lock.yaml
 
 # binary files
 *.exe
