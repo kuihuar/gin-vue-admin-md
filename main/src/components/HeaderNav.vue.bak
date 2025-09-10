@@ -4,7 +4,6 @@
     <div class="nav_box white">
       <div class="nav_wrap fix">
         <h1 class="l logo" id="logo">
-          <img src="@/assets/images/logo_w.png" alt="华苏建设有限公司">  
           <a href="#" style="display: inline;color: #ffffff;">华苏建设有限公司</a>
         </h1>
         <div class="nav fix r">
@@ -79,7 +78,7 @@
         </div>
         <div class="earth">
           <a href="#" class="a" target="_blank">
-            <!-- <img src="@/assets/images/earth.png"> -->
+            <img src="@/assets/images/earth.png">
           </a>
         </div>
         <div id="nav_btn_box">
@@ -91,20 +90,12 @@
         </div>
       </header>
     </section>
-    
-    <!-- 全屏菜单组件 -->
-    <MenuComponent v-if="showMenu" :isVisible="showMenu" @close="closeMenu" />
   </section>
 </template>
 
 <script>
-import MenuComponent from './MenuComponent.vue'
-
 export default {
   name: 'HeaderNav',
-  components: {
-    MenuComponent
-  },
   data() {
     return {
       searchKeyword: '',
@@ -221,9 +212,7 @@ export default {
     },
     toggleMenu() {
       this.showMenu = !this.showMenu
-    },
-    closeMenu() {
-      this.showMenu = false
+      console.log('菜单状态:', this.showMenu ? '打开' : '关闭')
     }
   }
 }

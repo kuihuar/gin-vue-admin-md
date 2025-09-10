@@ -99,4 +99,8 @@ export default {
 <style scoped>
 @import '/src/assets/css/reset.css';
 @import '/src/assets/css/style.css';
+/* 隐藏 fullpage.js 水印 */
+.fp-watermark {
+  display: none !important;
+}
 </style>

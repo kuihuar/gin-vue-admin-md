@@ -116,12 +116,12 @@ export default {
       ],
       historyItems: [
         {
-          time: '1953.1',
+          time: '1998.1',
           title: '应运而生',
           description: '新中国实施第一个"五年计划"，1月13日，山西省人民政府报经华北行政委员会批准，成立"山西省人民政府筑工程局"。设了迎泽大桥、迎泽大街、迎泽宾馆、太原五一百货大楼等。'
         },
         {
-          time: '1954.10',
+          time: '2001.10',
           title: '直属中央',
           description: '改为"中央人民政府筑工程部华北太原工程局"和"华北大同工程总公司"，归筑工程部直接管理。设了北京展览馆（原苏联展览馆）、北京体育馆、太原重机厂等。'
         },
@@ -192,55 +192,55 @@ export default {
           title: '具备资质优势',
           shortTitle: '资质优势',
           description: '拥有8个筑、3个市政公用、1个石油化工，共12项工程施工总承包特级资质，煤炭工业设计、筑工程设计、勘察、咨询、环境评价、地质灾害治理等50余项甲级设计资质及150多项总承包与专业承包一级资质，拥有国家商务部批准的对外工程承包和对外贸易经营权。',
-          icon: '/src/assets/images/advantage2.png'
+          icon: '/src/assets/images/advantage1.png'
         },
         {
           title: '筑全产业链优势',
           shortTitle: '产业链优势',
           description: '重组了两家省属设计单位、一家勘察单位和一家科研单位，全面形成了从科研、勘察、设计、设到运营的"全产业链"一体化竞争优势。',
-          icon: '/src/assets/images/advantage3.png'
+          icon: '/src/assets/images/advantage1.png'
         },
         {
           title: '投融资引领优势',
           shortTitle: '投融资优势',
           description: '完成对深圳一家投资公司的股权收购，对两家上市公司的控制，成立融资担保、融资租赁、商业保理、私募基金等多元化融资平台，金融授信额度突破1700亿元，资产负债率降至70%左右，连续多年被评为AAA级信用企业。',
-          icon: '/src/assets/images/advantage4.png'
+          icon: '/src/assets/images/advantage1.png'
         },
         {
           title: '装配式园区布局优势',
           shortTitle: '园区优势',
           description: '以150—200公里为半径在全省投资设各具特色又相互协同的筑产业现代化园区并投产运营，每年可为1000多万平方米的装配式筑及市政管廊、道路桥梁、风电项目提供绿色材支持。',
-          icon: '/src/assets/images/advantage5.png'
+          icon: '/src/assets/images/advantage1.png'
         },
         {
           title: '新业态平台优势',
           shortTitle: '新业态优势',
           description: '华苏建设组园区发、静态交通、城市运营、美丽乡村、低碳环保等新业态领域，发挥各专业投资平台公司作用，不断培育转型发展新动能。',
-          icon: '/src/assets/images/advantage6.png'
+          icon: '/src/assets/images/advantage1.png'
         },
         {
           title: '专业技术领域优势',
           shortTitle: '技术优势',
           description: '在园林古、大网架钢结构、机电设备安装、机场场道、矿井设、石油化工、炉窑砌筑、深基坑、光伏发电新能源等方面，持续做大做强传统筑板块专业技术核心竞争力。',
-          icon: '/src/assets/images/advantage7.png'
+          icon: '/src/assets/images/advantage1.png'
         },
         {
           title: '国内国外区域布局优势',
           shortTitle: '区域优势',
           description: '坚持"立足山西、布局全国、开拓海外"的经营战略方针，成立华南、华东、北京三大区域总部，海外业务足迹遍及60个国家和地区，加快走出去步伐，培育发展动能。',
-          icon: '/src/assets/images/advantage8.png'
+          icon: '/src/assets/images/advantage1.png'
         },
         {
           title: '集中采购供应链优势',
           shortTitle: '供应链优势',
           description: '依托2019年上线运行的集团"筑服云"平台，推进物资集中采购，并持续进行功能模块开发和系统优化，具备开展工程、货物、服务类线上采购功能。',
-          icon: '/src/assets/images/advantage9.png'
+          icon: '/src/assets/images/advantage1.png'
         },
         {
           title: '专业重组协同运营优势',
           shortTitle: '运营优势',
           description: '完成"筑设计、科研、检测、工程监理、信息化、金融、房地产及集中采购"等八大专业化业务板块重组，发挥企业经营协同效应，改变同质化经营状况，有力提升了专业化板块综合竞争力。',
-          icon: '/src/assets/images/advantage10.png'
+          icon: '/src/assets/images/advantage1.png'
         }
       ],
       visions: [

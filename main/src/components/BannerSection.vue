@@ -52,7 +52,10 @@
       <span class="tip l">最新公告</span>
       <span class="jg l">|</span>
       <section class="list1_box swiper-container">
-        <ul class="list1 swiper-wrapper">
+        <ul 
+          class="list1 swiper-wrapper" 
+          :style="{ transform: `translateY(-${currentNoticeIndex * 100}%)` }"
+        >
           <li class="swiper-slide" v-for="(notice, index) in notices" :key="index">
             <a :href="notice.link" target="_blank" :title="notice.title" class="a">
               <h4 class="l1 h4s1">{{ notice.title }}</h4>
@@ -77,7 +80,11 @@ export default {
       progressTimer: null,
       progressWidth: 0,
       isPaused: false,
-      slideInterval: 10000, // 5秒切换一次
+      slideInterval: 10000, // 10秒切换一次
+      // 添加公告滚动相关数据
+      currentNoticeIndex: 0,
+      noticeAutoScrollTimer: null,
+      noticeScrollInterval: 5000, // 5秒切换一次公告
       bannerSlides: [
         {
           image: '/src/assets/images/baner_hsjs.jpg',
@@ -121,9 +128,11 @@ export default {
   },
   mounted() {
     this.startAutoSlide()
+    this.startNoticeAutoScroll() // 启动公告自动滚动
   },
   beforeUnmount() {
     this.clearTimers()
+    this.clearNoticeTimer() // 清理公告定时器
   },
   methods: {
     startAutoSlide() {
@@ -175,13 +184,38 @@ export default {
       this.clearTimers()
       this.startAutoSlide()
     },
-    prevNotice() {
-      // 公告滚动逻辑
-      console.log('上一个公告')
+    // 添加公告滚动相关方法
+    startNoticeAutoScroll() {
+      this.clearNoticeTimer()
+      this.noticeAutoScrollTimer = setInterval(() => {
+        this.nextNotice()
+      }, this.noticeScrollInterval)
     },
+    
+    clearNoticeTimer() {
+      if (this.noticeAutoScrollTimer) {
+        clearInterval(this.noticeAutoScrollTimer)
+        this.noticeAutoScrollTimer = null
+      }
+    },
+    
+    prevNotice() {
+      this.currentNoticeIndex = this.currentNoticeIndex > 0 
+        ? this.currentNoticeIndex - 1 
+        : this.notices.length - 1
+      this.restartNoticeAutoScroll()
+    },
+    
     nextNotice() {
-      // 公告滚动逻辑
-      console.log('下一个公告')
+      this.currentNoticeIndex = this.currentNoticeIndex < this.notices.length - 1 
+        ? this.currentNoticeIndex + 1 
+        : 0
+      this.restartNoticeAutoScroll()
+    },
+    
+    restartNoticeAutoScroll() {
+      this.clearNoticeTimer()
+      this.startNoticeAutoScroll()
     }
   }
 }
@@ -370,6 +404,8 @@ export default {
   background: rgba(0, 0, 0, 0.7);
   padding: 15px 50px;
   z-index: 10;
+  display: flex;
+  align-items: center;
 }
 
 .tip {
@@ -386,16 +422,23 @@ export default {
 .list1_box {
   flex: 1;
   overflow: hidden;
+  height: 40px; /* 固定高度，只显示一条公告 */
+  display: flex;
+  align-items: center;
 }
 
 .list1 {
   display: flex;
+  flex-direction: column; /* 改为垂直布局 */
   transition: transform 0.5s ease;
+  height: 100%;
+  width: 100%;
 }
 
 .list1 li {
   flex-shrink: 0;
-  margin-right: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .list1 li a {
@@ -404,6 +447,18 @@ export default {
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 100%;
+  height: 100%;
+  line-height: 1.2; /* 调整行高 */
+}
+
+.list1 li a h4 {
+  margin: 0;
+  line-height: 1.2; /* 确保标题行高一致 */
+}
+
+.list1 li a span {
+  line-height: 1.2; /* 确保日期行高一致 */
 }
 
 .list1 li a:hover {

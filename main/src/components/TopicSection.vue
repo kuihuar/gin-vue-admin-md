@@ -41,17 +41,17 @@ export default {
           title: '市场开拓'
         },
         {
-          image: '/src/assets/images/list28_img3.jpg',
+          image: '/src/assets/images/list16_img3.jpg',
           link: '#',
           title: '党建学习'
         },
         {
-          image: '/src/assets/images/list16_img4.png',
+          image: '/src/assets/images/list16_img4.jpg',
           link: '#',
           title: '质量安全'
         },
         {
-          image: '/src/assets/images/ztesjszqhjs.png',
+          image: '/src/assets/images/list16_img5.jpg',
           link: '#',
           title: '专题学习'
         }
