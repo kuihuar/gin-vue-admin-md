@@ -77,25 +77,25 @@ export default {
       progressTimer: null,
       progressWidth: 0,
       isPaused: false,
-      slideInterval: 5000, // 5秒切换一次
+      slideInterval: 10000, // 5秒切换一次
       bannerSlides: [
         {
-          image: '/src/assets/images/20231012161013.jpg',
+          image: '/src/assets/images/baner_hsjs.jpg',
           title: '华苏建设有限公司',
           link: '#'
         },
         {
-          image: '/src/assets/images/bannerztesjszqh.jpg',
+          image: '/src/assets/images/banner_djxx169.jpg',
           title: '专题学习',
           link: '#'
         },
         {
-          image: '/src/assets/images/bannerdjxxjy.png',
+          image: '/src/assets/images/banner_djxx169.jpg',
           title: '党建学习',
           link: '#'
         },
         {
-          image: '/src/assets/images/2.jpg',
+          image: '/src/assets/images/banner_ztxx.jpg',
           title: '学习宣传',
           link: '#'
         }
@@ -205,14 +205,15 @@ export default {
 
 .swiper-wrapper {
   display: flex;
-  width: 400%; /* 4个图片，每个占100%宽度 */
+  width: 100%; 
+  /* 更精确的计算 */
   height: 100%;
   transition: transform 0.8s ease-in-out;
 }
 
 .swiper-slide {
   flex-shrink: 0;
-  width: 100%; /* 每个图片占100%宽度 */
+  width: 25%; /* 每个slide占25%，总共100% */
   height: 100%;
   position: relative;
 }
@@ -243,9 +244,11 @@ export default {
 .visual-img img {
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain; /* 改为contain，保持图片比例 */
+  width: 100% !important;
+  height: 100% !important;
+  /* object-fit: contain !important;  */
+  /* 改为contain，保持图片比例 */
+  object-fit: cover !important; 
   object-position: center;
 }
 
@@ -455,3 +458,16 @@ export default {
   border-bottom: 2px solid white;
 }
 </style>
+
+/* 修复轮播图显示问题 */
+.visual-img {
+  background-color: #f5f5f5; /* 浅灰色背景 */
+}
+
+.main-visual-slider {
+  background-color: #f5f5f5 !important; /* 确保容器有背景色 */
+}
+
+.visual-img img {
+  display: block;
+}

@@ -1,4 +1,4 @@
-<template>
+ <template>
   <section class="section footer fp-auto-height">
     <div class="wp">
       <div class="foot1 flex">

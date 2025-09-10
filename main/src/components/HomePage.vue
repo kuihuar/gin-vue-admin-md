@@ -102,4 +102,23 @@ export default {
 .home-page {
   font-family: Arial, sans-serif;
 }
+
+/* 修复轮播图显示问题 */
+.main-visual-slider {
+  background-color: transparent !important; /* 移除黑色背景 */
+}
+
+.main-visual-slider .swiper-slide::after {
+  opacity: 0.3; /* 降低遮罩层透明度 */
+}
+
+.main-visual-slider .overlay {
+  opacity: 0.2 !important; /* 降低渐变遮罩透明度 */
+}
+
+.visual-img img {
+  object-fit: cover !important; /* 确保图片填满容器 */
+  width: 100% !important;
+  height: 100% !important;
+}
 </style>
