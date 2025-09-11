@@ -60,11 +60,17 @@ export default {
   },
   methods: {
     prevTopic() {
-      // 上一个专题逻辑
+      // 直接触发 jQuery 事件，让 index.js 中的事件处理器执行
+      if (typeof $ !== 'undefined') {
+        $('.miso_btn2 .prev').trigger('click');
+      }
       console.log('上一个专题')
     },
     nextTopic() {
-      // 下一个专题逻辑
+      // 直接触发 jQuery 事件，让 index.js 中的事件处理器执行
+      if (typeof $ !== 'undefined') {
+        $('.miso_btn2 .next').trigger('click');
+      }
       console.log('下一个专题')
     }
   }

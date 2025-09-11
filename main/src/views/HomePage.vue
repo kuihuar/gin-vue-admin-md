@@ -33,15 +33,15 @@
 </template>
 
 <script>
-import HeaderNav from './HeaderNav.vue'
-import BannerSection from './BannerSection.vue'
-import NewsSection from './NewsSection.vue'
-import CompanyIntro from './CompanyIntro.vue'
-import BusinessSection from './BusinessSection.vue'
-import HistorySection from './HistorySection.vue'
-import ProjectShowcase from './ProjectShowcase.vue'
-import TopicSection from './TopicSection.vue'
-import FooterSection from './FooterSection.vue'
+import HeaderNav from '../components/layout/HeaderNav.vue'
+import BannerSection from '../components/sections/BannerSection.vue'
+import NewsSection from '../components/sections/NewsSection.vue'
+import CompanyIntro from '../components/common/CompanyIntro.vue'
+import BusinessSection from '../components/sections/BusinessSection.vue'
+import HistorySection from '../components/sections/HistorySection.vue'
+import ProjectShowcase from '../components/common/ProjectShowcase.vue'
+import TopicSection from '../components/sections/TopicSection.vue'
+import FooterSection from '../components/layout/FooterSection.vue'
 import fullpage from 'fullpage.js'
 
 export default {

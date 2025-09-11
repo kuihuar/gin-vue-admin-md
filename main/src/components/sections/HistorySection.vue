@@ -18,7 +18,7 @@
         <!-- 历史投 -->
         <div class="bd_li" v-if="activeTab === 0">
           <div class="tit3 miso_up">
-            <img src="/src/assets/images/list9_img.png" />
+            <img src="@/assets/images/list9_img.png" />
           </div>
           <section class="list9_box_btn miso_up">
             <section class="list9_box swiper-container">
@@ -69,7 +69,7 @@
                 </li>
               </ul>
               <div class="more1">
-                <a href="#" class="a1">了解更多投优势<img src="/src/assets/images/arr.png" alt=""></a>
+                <a href="#" class="a1">了解更多投优势<img src="@/assets/images/arr.png" alt=""></a>
               </div>
             </div>
           </div>
@@ -186,61 +186,61 @@ export default {
           title: '省属国企优势',
           shortTitle: '国企优势',
           description: '作为拥有70年历史的省属国有筑企业，华苏建设传承红色基因，践行国企职责，多次在山西省急难险阻等重点工程任务中发扬"投铁军"精神，获奖数量均居山西同行之冠。',
-          icon: '/src/assets/images/advantage1.png'
+          icon: '@/assets/images/advantage1.png'
         },
         {
           title: '具备资质优势',
           shortTitle: '资质优势',
           description: '拥有8个筑、3个市政公用、1个石油化工，共12项工程施工总承包特级资质，煤炭工业设计、筑工程设计、勘察、咨询、环境评价、地质灾害治理等50余项甲级设计资质及150多项总承包与专业承包一级资质，拥有国家商务部批准的对外工程承包和对外贸易经营权。',
-          icon: '/src/assets/images/advantage1.png'
+          icon: '@/assets/images/advantage1.png'
         },
         {
           title: '筑全产业链优势',
           shortTitle: '产业链优势',
           description: '重组了两家省属设计单位、一家勘察单位和一家科研单位，全面形成了从科研、勘察、设计、设到运营的"全产业链"一体化竞争优势。',
-          icon: '/src/assets/images/advantage1.png'
+          icon: '@/assets/images/advantage1.png'
         },
         {
           title: '投融资引领优势',
           shortTitle: '投融资优势',
           description: '完成对深圳一家投资公司的股权收购，对两家上市公司的控制，成立融资担保、融资租赁、商业保理、私募基金等多元化融资平台，金融授信额度突破1700亿元，资产负债率降至70%左右，连续多年被评为AAA级信用企业。',
-          icon: '/src/assets/images/advantage1.png'
+          icon: '@/assets/images/advantage1.png'
         },
         {
           title: '装配式园区布局优势',
           shortTitle: '园区优势',
           description: '以150—200公里为半径在全省投资设各具特色又相互协同的筑产业现代化园区并投产运营，每年可为1000多万平方米的装配式筑及市政管廊、道路桥梁、风电项目提供绿色材支持。',
-          icon: '/src/assets/images/advantage1.png'
+          icon: '@/assets/images/advantage1.png'
         },
         {
           title: '新业态平台优势',
           shortTitle: '新业态优势',
           description: '华苏建设组园区发、静态交通、城市运营、美丽乡村、低碳环保等新业态领域，发挥各专业投资平台公司作用，不断培育转型发展新动能。',
-          icon: '/src/assets/images/advantage1.png'
+          icon: '@/assets/images/advantage1.png'
         },
         {
           title: '专业技术领域优势',
           shortTitle: '技术优势',
           description: '在园林古、大网架钢结构、机电设备安装、机场场道、矿井设、石油化工、炉窑砌筑、深基坑、光伏发电新能源等方面，持续做大做强传统筑板块专业技术核心竞争力。',
-          icon: '/src/assets/images/advantage1.png'
+          icon: '@/assets/images/advantage1.png'
         },
         {
           title: '国内国外区域布局优势',
           shortTitle: '区域优势',
           description: '坚持"立足山西、布局全国、开拓海外"的经营战略方针，成立华南、华东、北京三大区域总部，海外业务足迹遍及60个国家和地区，加快走出去步伐，培育发展动能。',
-          icon: '/src/assets/images/advantage1.png'
+          icon: '@/assets/images/advantage1.png'
         },
         {
           title: '集中采购供应链优势',
           shortTitle: '供应链优势',
           description: '依托2019年上线运行的集团"筑服云"平台，推进物资集中采购，并持续进行功能模块开发和系统优化，具备开展工程、货物、服务类线上采购功能。',
-          icon: '/src/assets/images/advantage1.png'
+          icon: '@/assets/images/advantage1.png'
         },
         {
           title: '专业重组协同运营优势',
           shortTitle: '运营优势',
           description: '完成"筑设计、科研、检测、工程监理、信息化、金融、房地产及集中采购"等八大专业化业务板块重组，发挥企业经营协同效应，改变同质化经营状况，有力提升了专业化板块综合竞争力。',
-          icon: '/src/assets/images/advantage1.png'
+          icon: '@/assets/images/advantage1.png'
         }
       ],
       visions: [
@@ -249,8 +249,8 @@ export default {
           subtitle: 'vision',
           motto: '实力筑 恒久传承',
           description: '打造极具竞争优势，集投资、设、运营为一体的"全产业链"筑业龙头企业，蹚出山西筑业转型发展新路，当好山西筑产业现代化领头羊。',
-          image: '/src/assets/images/list12_img1.jpg',
-          icon: '/src/assets/images/list12_ico1.png',
+          image: '@/assets/images/list12_img1.jpg',
+          icon: '@/assets/images/list12_ico1.png',
           link: '#'
         },
         {
@@ -258,8 +258,8 @@ export default {
           subtitle: 'mission',
           motto: '奉献精品 开创未来',
           description: '实施品牌战略，营造时代精品。持续转型升级，持续创新创优，多为社会提供优质产品与服务，推动高质量发展，助力高品质生活。',
-          image: '/src/assets/images/list12_img2.jpg',
-          icon: '/src/assets/images/list12_ico2.png',
+          image: '@/assets/images/list12_img2.jpg',
+          icon: '@/assets/images/list12_ico2.png',
           link: '#'
         },
         {
@@ -267,8 +267,8 @@ export default {
           subtitle: 'strategy',
           motto: '',
           description: '加快设世界一流企业，向"世界500强"迈进，向国内领先、国际知名、具有较强竞争力的"大投"集团总目标迈进。',
-          image: '/src/assets/images/list12_img3.jpg',
-          icon: '/src/assets/images/list12_ico3.png',
+          image: '@/assets/images/list12_img3.jpg',
+          icon: '@/assets/images/list12_ico3.png',
           link: '#'
         }
       ]
@@ -289,6 +289,6 @@ export default {
 </script>
 
 <style scoped>
-@import '/src/assets/css/reset.css';
-@import '/src/assets/css/style.css';
+@import '@/assets/css/reset.css';
+@import '@/assets/css/style.css';
 </style>

@@ -59,6 +59,6 @@ export default {
 </script>
 
 <style scoped>
-@import '/src/assets/css/reset.css';
-@import '/src/assets/css/style.css';
+@import '@/assets/css/reset.css';
+@import '@/assets/css/style.css';
 </style>
