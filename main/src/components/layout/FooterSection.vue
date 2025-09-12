@@ -97,8 +97,8 @@ export default {
 </script>
 
 <style scoped>
-@import '@/assets/css/reset.css';
-@import '@/assets/css/style.css';
+@import '/src/assets/css/reset.css';
+@import '/src/assets/css/style.css';
 /* 隐藏 fullpage.js 水印 */
 .fp-watermark {
   display: none !important;

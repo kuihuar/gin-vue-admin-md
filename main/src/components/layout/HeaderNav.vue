@@ -19,14 +19,6 @@
                         <a :href="child.href" :title="child.title">{{ child.title }}</a>
                       </li>
                     </ul>
-                    <div class="con">
-                      <dl>
-                        <dt>我想...</dt>
-                        <dd>
-                          <a :href="item.href">了解更多</a>
-                        </dd>
-                      </dl>
-                    </div>
                   </div>
                   <div class="right fix">
                     <div class="infor">
@@ -40,60 +32,44 @@
                         <a :href="item.href" class="more"> 查看更多 <i class="icon"></i></a>
                       </div>
                     </div>
-                    <div class="img">
-                      <img src="@/assets/images/dropdown.jpg" />
-                    </div>
                   </div>
                 </div>
               </div>
             </li>
           </ul>
-          
-          <!-- 搜索功能 -->
-          <div class="search l">
-            <button name="submit_button" type="submit" class="search_ico" @click="handleSearch"></button>
-            <div class="h_search">
-              <input 
-                type="text" 
-                placeholder="请输入关键字" 
-                autocomplete="off" 
-                v-model="searchKeyword" 
-                @keyup.enter="handleSearch"
-              >
-            </div>
-          </div>
-          
-          <div class="earth">
-            <a href="#" class="a" target="_blank"></a>
-          </div>
-          <div class="menu l" @click="toggleMenu"></div>
         </div>
       </div>
     </div>
     
-    <!-- 移动端导航 -->
+    <!-- 移动端头部导航 -->
     <section class="m_header_box">
       <header id="m_header">
-        <div id="logo">
+        <!-- <div id="logo">
           <a href="#" style="display: inline;color: #ffffff;">华苏建设有限公司</a>
-        </div>
-        <div class="earth">
-          <a href="#" class="a" target="_blank">
-            <!-- <img src="@/assets/images/earth.png"> -->
-          </a>
-        </div>
-        <div id="nav_btn_box">
-          <aside id="nav_btn">
-            <div class="point" name="1" id="mbtn">
-              <span class="navbtn"></span>
-            </div>
-          </aside>
-        </div>
+        </div> -->
+        <div class="mobile-menu" @click="toggleMobileMenu"></div>
       </header>
     </section>
     
+    <!-- 移动端菜单 -->
+    <div id="m_nav" :class="{ act: showMobileMenu }">
+      <ul>
+        <li v-for="item in navItems" :key="item.id" class="void">
+          <a :href="item.href">{{ item.title }}</a>
+          <ul class="sub" v-if="item.children">
+            <li v-for="child in item.children" :key="child.id">
+              <a :href="child.href">{{ child.title }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- 移动端菜单遮罩 -->
+    <!-- <div class="nav_mask" v-if="showMobileMenu" @click="closeMobileMenu"></div> -->
+    
     <!-- 全屏菜单组件 -->
-    <MenuComponent v-if="showMenu" :isVisible="showMenu" @close="closeMenu" />
+    <!-- <MenuComponent v-if="showMenu" :isVisible="showMenu" @close="closeMenu" /> -->
   </section>
 </template>
 
@@ -109,6 +85,7 @@ export default {
     return {
       searchKeyword: '',
       showMenu: false,
+      showMobileMenu: false, // 添加移动端菜单状态
       navItems: [
         {
           id: 1,
@@ -224,6 +201,20 @@ export default {
     },
     closeMenu() {
       this.showMenu = false
+    },
+    // 添加移动端菜单方法
+    toggleMobileMenu() {
+      this.showMobileMenu = !this.showMobileMenu
+      // 防止body滚动
+      if (this.showMobileMenu) {
+        document.body.classList.add('navShow')
+      } else {
+        document.body.classList.remove('navShow')
+      }
+    },
+    closeMobileMenu() {
+      this.showMobileMenu = false
+      document.body.classList.remove('navShow')
     }
   }
 }
@@ -232,4 +223,200 @@ export default {
 <style>
 @import '@/assets/css/reset.css';
 @import '@/assets/css/style.css';
+
+/* 移动端菜单样式补充 */
+#m_nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background: #fff;
+  z-index: 100001;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+}
+
+#m_nav.act {
+  right: 0;
+}
+
+#m_nav .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  z-index: 100002;
+}
+
+#m_nav ul {
+  list-style: none;
+  padding: 60px 0 0 0;
+  margin: 0;
+}
+
+#m_nav .void {
+  border-bottom: 1px solid #eee;
+}
+
+#m_nav .void > a {
+  display: block;
+  padding: 15px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+#m_nav .void > a:hover {
+  background: #f8f9fa;
+  border-left-color: #007bff;
+  color: #007bff;
+}
+
+#m_nav .sub {
+  background: #f8f9fa;
+  padding: 0;
+  margin: 0;
+}
+
+#m_nav .sub li {
+  border-bottom: none;
+}
+
+#m_nav .sub a {
+  padding: 12px 20px 12px 40px;
+  font-size: 14px;
+  color: #666;
+  border-left: none;
+}
+
+#m_nav .sub a:hover {
+  background: #e9ecef;
+  color: #007bff;
+}
+
+.nav_mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 100000;
+}
+
+/* 防止body滚动 */
+body.navShow {
+  overflow: hidden;
+}
+
+/* 响应式显示控制 */
+/* 移动端头部样式 - 使用更具体的选择器 */
+section.index .m_header_box {
+  display: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 60px !important;
+  /* background: #333 !important; */
+  background: transparent !important;
+  z-index: 100001 !important;
+  transition: none !important;
+}
+
+/* section.index #m_header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  padding: 0 20px !important;
+  position: relative !important;
+  box-shadow: none !important;
+  background-size: auto !important;
+} */
+
+/* section.index #m_header #logo a {
+  color: #fff !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+} */
+
+/* section.index .mobile-menu {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  width: 24px !important;
+  height: 24px !important;
+  cursor: pointer !important;
+  z-index: 100002 !important;
+  background-size: contain !important;
+  display: block !important;
+} */
+
+/* 移除伪元素的三横线样式 */
+.mobile-menu::before,
+.mobile-menu::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #ffffff;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+.mobile-menu::before {
+  transform: translateY(-6px);
+}
+
+.mobile-menu::after {
+  transform: translateY(4px);
+}
+
+/* 移动端显示 */
+@media (max-width: 1200px) {
+  .nav_box {
+    display: none !important;
+  }
+  
+  section.index .m_header_box {
+    display: block !important;
+  }
+  
+  section.index .mobile-menu {
+    display: block !important;
+  }
+}
+
+/* 桌面端隐藏 */
+@media (min-width: 1201px) {
+  .nav_box {
+    display: block !important;
+  }
+  
+  section.index .m_header_box {
+    display: none !important;
+  }
+  
+  section.index .mobile-menu {
+    display: none !important;
+  }
+  
+  #m_nav {
+    display: none !important;
+  }
+  
+  .nav_mask {
+    display: none !important;
+  }
+}
 </style>

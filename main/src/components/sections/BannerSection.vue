@@ -225,11 +225,33 @@ export default {
 @import '/src/assets/css/reset.css';
 @import '/src/assets/css/style.css';
 
-/* 轮播图样式 */
+/* 轮播图样式 - 修复响应式问题 */
 .main-visual-slider {
   position: relative;
-  height: 100vh;
+  height: 100vh; /* 桌面端全屏高度 */
   overflow: hidden;
+}
+
+/* 移动端响应式调整 */
+@media (max-width: 1200px) {
+  .main-visual-slider {
+    height: 60vw !important; /* 移动端使用vw单位 */
+    min-height: 300px; /* 最小高度保证 */
+  }
+}
+
+@media (max-width: 768px) {
+  .main-visual-slider {
+    height: 50vw !important; /* 小屏幕进一步调整 */
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-visual-slider {
+    height: 45vw !important; /* 手机端优化 */
+    min-height: 200px;
+  }
 }
 
 .swiper-container {
@@ -240,7 +262,6 @@ export default {
 .swiper-wrapper {
   display: flex;
   width: 100%; 
-  /* 更精确的计算 */
   height: 100%;
   transition: transform 0.8s ease-in-out;
 }
@@ -280,18 +301,58 @@ export default {
   max-height: 100%;
   width: 100% !important;
   height: 100% !important;
-  /* object-fit: contain !important;  */
-  /* 改为contain，保持图片比例 */
   object-fit: cover !important; 
   object-position: center;
 }
 
-/* 控制按钮样式 */
+/* 控制按钮样式 - 移动端优化 */
 .main-visual-controls {
   position: absolute;
   bottom: 50px;
   right: 50px;
   z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .main-visual-controls {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .main-visual-loading-bar {
+    width: 150px !important;
+  }
+  
+  .my_btn1, .my_btn2 {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  
+  .slide-prev-btn, .slide-next-btn {
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-visual-controls {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .main-visual-loading-bar {
+    width: 120px !important;
+  }
+  
+  .my_btn1, .my_btn2 {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  
+  .slide-prev-btn, .slide-next-btn {
+    width: 20px !important;
+    height: 20px !important;
+  }
 }
 
 .main-visual-loading-bar {
@@ -395,7 +456,7 @@ export default {
   background: rgba(255, 255, 255, 0.5);
 }
 
-/* 公告滚动样式 */
+/* 公告滚动样式 - 移动端优化 */
 .inotice_list_con {
   position: absolute;
   bottom: 0;
@@ -406,6 +467,39 @@ export default {
   z-index: 10;
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .inotice_list_con {
+    padding: 10px 20px;
+  }
+  
+  .tip {
+    font-size: 12px !important;
+  }
+  
+  .list1 li a {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .inotice_list_con {
+    padding: 8px 15px;
+  }
+  
+  .tip {
+    font-size: 10px !important;
+  }
+  
+  .list1 li a {
+    font-size: 10px !important;
+  }
+  
+  .arrs {
+    width: 15px !important;
+    height: 15px !important;
+  }
 }
 
 .tip {
@@ -512,7 +606,6 @@ export default {
   border-right: 2px solid white;
   border-bottom: 2px solid white;
 }
-</style>
 
 /* 修复轮播图显示问题 */
 .visual-img {
@@ -526,3 +619,4 @@ export default {
 .visual-img img {
   display: block;
 }
+</style>
