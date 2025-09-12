@@ -208,13 +208,19 @@ export default {
       // 防止body滚动
       if (this.showMobileMenu) {
         document.body.classList.add('navShow')
+        // 添加 active 类到移动菜单按钮
+        document.querySelector('.mobile-menu').classList.add('active')
       } else {
         document.body.classList.remove('navShow')
+        // 移除 active 类
+        document.querySelector('.mobile-menu').classList.remove('active')
       }
     },
     closeMobileMenu() {
       this.showMobileMenu = false
       document.body.classList.remove('navShow')
+      // 移除 active 类
+      document.querySelector('.mobile-menu').classList.remove('active')
     }
   }
 }
@@ -224,82 +230,328 @@ export default {
 @import '@/assets/css/reset.css';
 @import '@/assets/css/style.css';
 
-/* 移动端菜单样式补充 */
+/* 移动端菜单样式 */
 #m_nav {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 80%;
-  max-width: 300px;
+  width: 85%;
+  max-width: 350px;
   height: 100vh;
-  background: #fff;
+  /* background: #ffffff; */
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
   z-index: 100001;
-  transition: right 0.3s ease;
+  transition: right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overflow-y: auto;
-  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  box-shadow: -8px 0 32px rgba(0,0,0,0.3);
+  border-left: 1px solid #34495e;
 }
 
 #m_nav.act {
   right: 0;
 }
 
-#m_nav .close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #333;
-  z-index: 100002;
-}
-
 #m_nav ul {
   list-style: none;
-  padding: 60px 0 0 0;
+  padding: 0px 0 200px 0;
   margin: 0;
 }
 
+/* 增强移动菜单悬停效果 */
 #m_nav .void {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+#m_nav .void::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(135, 206, 235, 0.1), transparent);
+  transition: left 0.6s ease;
+  z-index: 0;
+}
+
+#m_nav .void:hover::before {
+  left: 100%;
 }
 
 #m_nav .void > a {
   display: block;
-  padding: 15px 20px;
-  color: #333;
+  padding: 10px 0px;
+  color: #ffffff;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
-  border-left: 3px solid transparent;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+  transform: translateX(0);
+}
+
+#m_nav .void > a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #87ceeb 0%, #5dade2 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(135, 206, 235, 0.3);
+}
+
+#m_nav .void > a::after {
+  content: '→';
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  color: #87ceeb;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 0 5px rgba(135, 206, 235, 0.5);
 }
 
 #m_nav .void > a:hover {
-  background: #f8f9fa;
-  border-left-color: #007bff;
-  color: #007bff;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #2c3e50;
+  padding-left: 35px;
+  transform: translateX(5px);
+  box-shadow: inset 0 0 20px rgba(135, 206, 235, 0.1);
 }
 
+#m_nav .void > a:hover::before {
+  transform: scaleY(1);
+  box-shadow: 0 0 15px rgba(135, 206, 235, 0.4);
+}
+
+#m_nav .void > a:hover::after {
+  opacity: 1;
+  right: 25px;
+  transform: translateY(-50%) scale(1);
+}
+
+/* 子菜单悬停效果增强 */
 #m_nav .sub {
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   padding: 0;
   margin: 0;
+  border-left: 3px solid #e3f2fd;
+  position: relative;
+  overflow: hidden;
+}
+
+#m_nav .sub::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, #87ceeb 0%, #5dade2 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: top;
+}
+
+#m_nav .void:hover .sub::before {
+  transform: scaleY(1);
 }
 
 #m_nav .sub li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+#m_nav .sub li:last-child {
   border-bottom: none;
 }
 
+#m_nav .sub li:hover {
+  background: rgba(135, 206, 235, 0.05);
+  transform: translateX(3px);
+}
+
 #m_nav .sub a {
-  padding: 12px 20px 12px 40px;
-  font-size: 14px;
-  color: #666;
+  padding: 14px 30px 14px 30px;
+  font-size: 13px;
+  color: #666666;
   border-left: none;
+  font-weight: 400;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+#m_nav .sub a::before {
+  content: '•';
+  position: absolute;
+  left: 35px;
+  color: #87ceeb;
+  font-size: 12px;
+  opacity: 0;
+  transform: scale(0) rotate(0deg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 0 5px rgba(135, 206, 235, 0.5);
+}
+
+#m_nav .sub a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(135, 206, 235, 0.1), transparent);
+  transition: width 0.3s ease;
 }
 
 #m_nav .sub a:hover {
-  background: #e9ecef;
-  color: #007bff;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #1976d2;
+  padding-left: 55px;
+  transform: translateX(5px);
+  box-shadow: inset 0 0 15px rgba(135, 206, 235, 0.1);
+}
+
+#m_nav .sub a:hover::before {
+  opacity: 1;
+  transform: scale(1.2) rotate(360deg);
+  color: #1976d2;
+}
+
+#m_nav .sub a:hover::after {
+  width: 100%;
+}
+
+/* 添加菜单项进入动画 */
+#m_nav .void {
+  animation: slideInFromRight 0.3s ease forwards;
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+#m_nav .void:nth-child(1) { animation-delay: 0.1s; }
+#m_nav .void:nth-child(2) { animation-delay: 0.15s; }
+#m_nav .void:nth-child(3) { animation-delay: 0.2s; }
+#m_nav .void:nth-child(4) { animation-delay: 0.25s; }
+#m_nav .void:nth-child(5) { animation-delay: 0.3s; }
+#m_nav .void:nth-child(6) { animation-delay: 0.35s; }
+
+@keyframes slideInFromRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 子菜单项进入动画 */
+#m_nav .sub li {
+  animation: slideInFromLeft 0.3s ease forwards;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+#m_nav .sub li:nth-child(1) { animation-delay: 0.1s; }
+#m_nav .sub li:nth-child(2) { animation-delay: 0.15s; }
+#m_nav .sub li:nth-child(3) { animation-delay: 0.2s; }
+#m_nav .sub li:nth-child(4) { animation-delay: 0.25s; }
+
+@keyframes slideInFromLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 菜单头部 */
+#m_nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(0deg, #ffffff 0%, #34495e 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+}
+
+#m_nav::after {
+  content: '华苏建设';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 1;
+  letter-spacing: 0.5px;
+}
+
+/* 关闭按钮 */
+#m_nav .close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+#m_nav .close-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.3);
+  transform: rotate(90deg);
+}
+
+/* 滚动条样式 */
+#m_nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+#m_nav::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#m_nav::-webkit-scrollbar-thumb {
+  background: #87ceeb;
+  border-radius: 2px;
+}
+
+#m_nav::-webkit-scrollbar-thumb:hover {
+  background: #5dade2;
+}
+
+/* 添加微妙的背景纹理 */
+#m_nav {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(135, 206, 235, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(44, 62, 80, 0.02) 0%, transparent 50%);
 }
 
 .nav_mask {
@@ -317,6 +569,16 @@ body.navShow {
   overflow: hidden;
 }
 
+.m_header_box {transition: .6s;display: none;height: .7rem; width: 100%;position: relative;z-index: 100000;}
+.m_header_box header{
+	padding: 0 0 0 15px;
+	height: .7rem;
+	/* background: url(../images/footer.jpg) center bottom no-repeat;box-shadow: 0 3px 5px rgba(0,0,0,.05); */
+	background-size: cover;position: fixed;top: 0;left: 0;right: 0;z-index: 100;
+	display:flex;
+	justify-content:space-between;align-items: center;
+	/* background: #284ca7; */
+}
 /* 响应式显示控制 */
 /* 移动端头部样式 - 使用更具体的选择器 */
 section.index .m_header_box {
@@ -330,56 +592,84 @@ section.index .m_header_box {
   background: transparent !important;
   z-index: 100001 !important;
   transition: none !important;
+  justify-content: flex-end !important;
 }
 
-/* section.index #m_header {
+section.index #m_header {
   display: flex !important;
+  justify-content: flex-end !important;
   align-items: center !important;
-  justify-content: space-between !important;
-  height: 100% !important;
+  /* height: 80% !important; */
   padding: 0 20px !important;
-  position: relative !important;
-  box-shadow: none !important;
-  background-size: auto !important;
-} */
+}
 
-/* section.index #m_header #logo a {
-  color: #fff !important;
-  font-size: 16px !important;
-  font-weight: bold !important;
-  text-decoration: none !important;
-} */
+/* 移动菜单按钮基础样式 */
+.mobile-menu {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
 
-/* section.index .mobile-menu {
-  position: relative !important;
-  top: auto !important;
-  right: auto !important;
-  width: 24px !important;
-  height: 24px !important;
-  cursor: pointer !important;
-  z-index: 100002 !important;
-  background-size: contain !important;
-  display: block !important;
-} */
-
-/* 移除伪元素的三横线样式 */
+/* 三横线效果 - 使用伪元素创建三条线 */
 .mobile-menu::before,
 .mobile-menu::after {
   content: '';
-  display: block;
+  position: absolute;
   width: 20px;
   height: 2px;
   background: #ffffff;
-  margin: 4px 0;
-  transition: 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 1px;
 }
 
+/* 中间线 - 使用元素本身 */
+.mobile-menu {
+  background: #ffffff;
+  width: 20px;
+  height: 2px;
+  border-radius: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 上横线 */
 .mobile-menu::before {
-  transform: translateY(-6px);
+  top: 8px;
+  transform: translateY(0);
 }
 
+/* 下横线 */
 .mobile-menu::after {
-  transform: translateY(4px);
+  bottom: 8px;
+  transform: translateY(0);
+}
+
+/* 菜单展开时的 X 效果 - 完全隐藏中间线，只显示 X */
+.mobile-menu.active::before {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.mobile-menu.active::after {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+.mobile-menu.active {
+  background: transparent;
+}
+
+/* 悬停效果 */
+.mobile-menu:hover::before,
+.mobile-menu:hover::after,
+.mobile-menu:hover {
+  /* background: #87ceeb; */
+  box-shadow: 0 0 8px rgba(135, 206, 235, 0.5);
 }
 
 /* 移动端显示 */
